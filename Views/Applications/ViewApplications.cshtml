@@ -1,0 +1,35 @@
+﻿@model IEnumerable<JRSystem.Models.Application>
+
+
+
+<h1>Applications towards your referral</h1>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr class="text-center">
+            <th>
+                Message
+            </th>
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+               
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ApplicationId">Details on application</a>
+                    <a class="btn btn-success" asp-controller="Accounts" asp-action="Details" asp-route-id="@item.ApplierId">Details on applier</a>
+                    @*<a asp-action="Delete" asp-route-id="@item.ApplicationId">Delete</a>*@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

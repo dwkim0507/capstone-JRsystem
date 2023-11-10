@@ -1,0 +1,47 @@
+﻿@model IEnumerable<JRSystem.Models.Application>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplierId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferralId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplierId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferralId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ApplicationId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ApplicationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ApplicationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

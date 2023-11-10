@@ -1,0 +1,34 @@
+﻿@model JRSystem.Models.Application
+
+@{
+    ViewData["Title"] = "Apply A Referral";
+}
+
+<h1 >@ViewData["Title"]</h1>
+<h4>Anything you want to tell the Referrer</h4>
+
+
+
+
+<hr />
+<div class="row" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label">Leave a message here first!</label>
+                <input asp-for="Summary" type="textarea" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top: 20px">
+                <input type="submit" value="Next step: upload files" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+

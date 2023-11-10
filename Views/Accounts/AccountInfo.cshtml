@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model dynamic
+
+
+
+@{
+    var referralList = Model.ReferralList as IEnumerable<JRSystem.Models.Referral>;
+    var id = Model.Id;
+}
+
+<h1>My Referrals</h1>
+<br></br>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr class ="text-center">
+            <th>
+                Referral Name
+            </th>
+                     
+            <th>
+                Referral's Deadline
+            </th>
+            <th>
+                Job Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in referralList)
+        {
+            if (item.AccountID == Context.Session.GetInt32("_AccountID"))
+            {
+                <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReferralName)
+                    </td>
+                  
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deadline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobTitle)
+                    </td>
+                    <td>
+                        <a asp-controller="Applications" asp-action="ViewApplications" asp-route-id="@item.ReferralId" class="btn btn-primary">Check Applications</a>
+                        
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

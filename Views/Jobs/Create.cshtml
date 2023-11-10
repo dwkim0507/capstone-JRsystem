@@ -1,0 +1,49 @@
+﻿@model JRSystem.Models.Job
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Enter job details</h1>
+
+<hr />
+<div class="row"style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company" class="control-label"></label>
+                <input asp-for="Company" class="form-control" />
+                <span asp-validation-for="Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Job_type" class="control-label">Job Type</label>
+                <input asp-for="Job_type" class="form-control" />
+                <span asp-validation-for="Job_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Job_description" class="control-label">Job Description</label>
+                <input asp-for="Job_description" class="form-control" />
+                <span asp-validation-for="Job_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Start_time" class="control-label">Job Start Time</label>
+                <input asp-for="Start_time" class="form-control" />
+                <span asp-validation-for="Start_time" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group" style="margin-top:10px">
+                <input type="submit" value="Create a Referral" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

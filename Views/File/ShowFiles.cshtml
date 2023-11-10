@@ -1,0 +1,53 @@
+﻿@model FileUploadView
+@{
+    ViewData["Title"] = "View uploaded files";
+}
+
+<h4>Uploaded Files Here</h4>
+<hr />
+<h4>Find the files you need here</h4>
+@if (Model.FilesOnDatabase.Count == 0)
+{
+    <caption>No Records Found</caption>
+}
+else
+{
+    <caption>List of Files on Database</caption>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>File Type</th>
+                <th>Created On</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var file in Model.FilesOnDatabase)
+            {
+                <tr>
+                    <td>@file.Name</td>
+                    <td>@file.Description</td>
+                    <td>@file.FileType</td>
+                    <td>@file.CreatedOn</td>
+                    <td>
+                        <a type="button" class="btn btn-primary" asp-controller="File" asp-action="DownloadFileFromDatabase" asp-route-id="@file.Id">Download</a>
+                        
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}
+
+<button class="btn btn-primary" type="button" id="backButton">Back</button>
+
+
+<script>
+    document.getElementById('backButton').addEventListener('click', function () {
+        history.back();
+    });
+</script>

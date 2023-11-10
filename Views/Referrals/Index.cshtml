@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model dynamic
+
+
+
+@{
+    ViewData["Title"] = "Find Referrals";
+    var referralList = Model.ReferralList as IEnumerable<JRSystem.Models.Referral>;
+    var id = Model.Id;
+}
+
+<h1>Find all referrals here!</h1>
+<hr />
+
+
+<table class="table table-striped">
+    <thead>
+        <tr class="text-center">
+            <th>
+                Referral Name
+            </th>
+            
+            <th>
+                Referral Date
+            </th>
+            <th>
+                Referral's deadline
+            </th>
+            <th>
+                Job Title
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in referralList)
+        {
+
+            <tr class="text-center">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReferralName)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReferralDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.deadline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobTitle)
+                    </td>
+                    <td>
+                    <a asp-controller="Applications" class="btn btn-primary" asp-action="Create" asp-route-id=@item.ReferralId>Apply now!</a>
+               
+                    </td>
+                </tr>
+            
+            
+        }
+    </tbody>
+</table>

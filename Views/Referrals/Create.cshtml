@@ -1,0 +1,47 @@
+﻿@model JRSystem.Models.Referral
+
+
+
+<h1 >Post your referral today!</h1>
+
+
+<hr />
+<div class="row" style="display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="ReferralName" class="control-label">Referral Name</label>
+                <input asp-for="ReferralName" class="form-control" />
+                <span asp-validation-for="ReferralName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReferralDate" class="control-label">Referral's Date</label>
+                <input asp-for="ReferralDate" class="form-control" />
+                <span asp-validation-for="ReferralDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="deadline" class="control-label">Referral's Deadline</label>
+                <input asp-for="deadline" class="form-control" />
+                <span asp-validation-for="deadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitle" class="control-label">Job Title</label>
+                <input asp-for="JobTitle" class="form-control" />
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Num_seats" class="control-label">Number of seats available</label>
+                <input asp-for="Num_seats" class="form-control" />
+                <span asp-validation-for="Num_seats" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" style="margin-top:10px">
+                <input type="submit" value="Enter more Job Details" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

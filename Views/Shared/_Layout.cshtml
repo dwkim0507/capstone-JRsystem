@@ -1,0 +1,106 @@
+﻿@using System.Security.Claims
+
+@{
+    
+        int loginValue = Context.Session.GetInt32("_Login") ?? 0;
+   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - JRSystem</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/JRSystem.styles.css" asp-append-version="true" />
+    <style>
+        .nav-item {
+            margin-left: 20px;
+        }
+
+            .nav-item a.nav-link:hover {
+                color: #0D6EFD;
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+
+
+    <nav class="py-2 bg-body-tertiary border-bottom">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item"><a class="nav-link link-body-emphasis px-2 active" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Referrals" asp-action="Index">Find</a></li>
+                <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Referrals" asp-action="Create">Post</a></li>
+                <li class="nav-item"><a class="nav-link link-body-emphasis px-2 " asp-controller="Home" asp-action="About">About</a></li>
+
+            </ul>
+            <ul class="nav">
+                @if (loginValue==1)
+
+                {
+                    <li class="nav-item"><a class="nav-link link-body-emphasis px-2" >Welcome, @Context.Session.GetString("_Uname")</a></li>
+                    <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Accounts" asp-action="AccountInfo">Account</a></li>
+                    <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Accounts" asp-action="Logout">Log out</a></li>
+                }
+                else
+                {
+                    <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Accounts" asp-action="Login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link link-body-emphasis px-2" asp-controller="Accounts" asp-action="Create">Sign up</a></li>
+                }
+                
+            </ul>
+        </div>
+    </nav>
+
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                <img src="~/image/logo4.png" class="bi me-2" alt="My image" width="130" height="70" />
+                <span class="fs-4 " style="margin-left: 30px">Job Referrals Posting System</span>
+            </a>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 d-flex align-items-center" role="search">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                <a href="" class="btn btn-primary" style="margin:5px; transition: background-color 0.3s ease;">
+                    Search
+                </a>
+            </form>
+        </div>
+    </header>
+    
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer  text-center">
+        
+            <div class="container">
+                &copy; 2023 - JRSystem_CAD Capstone Project Team 10
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+<footer class="border-top footer  text-center">
+    <div class="container ">
+        
+        <div class="container">
+            &copy; 2023 - JRSystem_CAD Capstone Project Team 10
+        </div>
+
+    </div>
+
+</footer>
